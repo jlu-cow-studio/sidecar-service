@@ -18,10 +18,12 @@ const (
 )
 
 func main() {
-	serviceName := os.Getenv(ENV_SERVICE_NAME)
-	serviceAddress := os.Getenv(ENV_ADDRESS)
-	servicePort := os.Getenv(ENV_PORT)
-	sidecarPort := os.Getenv(ENV_SIDECAR_PORT)
+	discovery.Init()
+
+	serviceName := os.Args[1]
+	serviceAddress := os.Args[2]
+	servicePort := os.Args[3]
+	sidecarPort := os.Args[4]
 
 	if serviceName == "" {
 		panic(errors.New("empty serviceName"))
