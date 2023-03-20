@@ -11,10 +11,11 @@ import (
 )
 
 const (
-	ENV_SERVICE_NAME = "ENV_SERVICE_NAME"
-	ENV_ADDRESS      = "ENV_ADDRESS"
-	ENV_PORT         = "EVN_PORT"
-	ENV_SIDECAR_PORT = "ENV_SIDECAR_PORT"
+	ENV_SERVICE_NAME   = "ENV_SERVICE_NAME"
+	ENV_ADDRESS        = "ENV_ADDRESS"
+	ENV_PORT           = "EVN_PORT"
+	ENV_SIDECAR_PORT   = "ENV_SIDECAR_PORT"
+	INNER_SIDECAR_PORT = "8081"
 )
 
 func main() {
@@ -59,5 +60,5 @@ func main() {
 	})
 
 	// 启动HTTP服务，默认监听地址为:8080
-	router.Run(fmt.Sprintf("0.0.0.0:%s", sidecarPort))
+	router.Run(fmt.Sprintf("0.0.0.0:%s", INNER_SIDECAR_PORT))
 }
