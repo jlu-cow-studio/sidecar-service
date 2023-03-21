@@ -52,8 +52,14 @@ func main() {
 		panic(err)
 	}
 
+	fmt.Printf("successfully register a service %v, address: %v,port: %v. The sidecar is standing by on port: %v", serviceName, serviceAddress, servicePort, sidecarPort)
+
 	// 创建gin引擎
 	router := gin.Default()
+
+	router.GET("/", func(c *gin.Context) {
+		fmt.Fprintf(c.Writer, "hello, here is the sidecar for service: %s, its address is: %v,port is: %v", serviceName, serviceAddress, servicePort)
+	})
 
 	router.GET("/health", func(c *gin.Context) {
 		fmt.Fprintln(c.Writer, "OK")
